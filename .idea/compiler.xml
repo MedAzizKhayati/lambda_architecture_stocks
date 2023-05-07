@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="stock_trades_source" />
+        <module name="trades_stream_consumer" />
+        <module name="trades_spark_batch_processing" />
+        <module name="trades_spark_stream_processing" />
+        <module name="kafka_stream_to_hdfs" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="trades_spark_streaming" target="8" />
+      <module name="trades_stream_processing" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
