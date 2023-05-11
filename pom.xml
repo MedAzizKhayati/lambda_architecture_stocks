@@ -11,7 +11,6 @@
     <modules>
         <module>stock_trades_source</module>
         <module>trades_stream_consumer</module>
-        <module>trades_stream_processing</module>
         <module>trades_spark_stream_processing</module>
         <module>kafka_stream_to_hdfs</module>
         <module>trades_spark_batch_processing</module>

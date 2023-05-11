@@ -51,8 +51,10 @@ public class KafkaStreamToHdfs {
 
         // Save the data to HDFS
         trades.foreachRDD(rdd -> {
+            if(rdd.isEmpty()) return;
             spark.createDataFrame(rdd, Trade.class)
                     .toDF()
+                    .coalesce(1)
                     .write()
                     .format("com.databricks.spark.csv")
                     .mode("append")

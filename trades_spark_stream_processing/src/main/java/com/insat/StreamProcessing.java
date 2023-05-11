@@ -63,6 +63,8 @@ public class StreamProcessing {
                         MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
                         MongoCollection<Document> collection = database.getCollection(COLLECTION_NAME);
 
+                        List<Document> documents = new ArrayList<>();
+
                         // Iterate over the records in the partition and save them to MongoDB
                         while (partitionOfRecords.hasNext()) {
                             TradeAggregation trade = partitionOfRecords.next();
@@ -83,10 +85,11 @@ public class StreamProcessing {
                                     .append("symbol", trade.getSymbol())
                                     .append("created_at", new Date().getTime());
 
-                            // Insert the document into MongoDB
-                            collection.insertOne(document);
-
+                            documents.add(document);
                         }
+                        if( documents.size() > 0 )
+                            collection.insertMany(documents);
+
                         // Close the MongoClient instance
                         mongoClient.close();
                     });
